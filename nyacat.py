@@ -18,7 +18,7 @@ def receiver(sock,ps,*server_address):
     """Receives conections"""
     data = sock.recv(2048)
     while data:
-        print("~> ",data)
+        print("~> ",data,sep = '')
         print(str(ps).format(*server_address))
         data = sock.recv(2048)
     
@@ -83,16 +83,18 @@ def client(host,port):
         ps+=warning+"@"
         ps+=command_bg+"{} >>>] "
         message = input(str(ps).format(*server_address))
-        bgthread = Thread(target=receiver,args=(sock,ps,*server_address,))
+        bgthread = Thread(target=receiver,args=(sock,ps,*server_address,),daemon=True)
         bgthread.start()
         while True:
             sock.sendall(message.encode('utf-8'))
             message = input(str(ps).format(*server_address))
 
 
+
     finally:
         print(warning+"[Closing Socket]\n[Server dead]")
         sock.close()
+        
 
 
 if __name__ == "__main__":
