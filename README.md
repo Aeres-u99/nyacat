@@ -32,7 +32,10 @@ Commands:
   listen  Listener mode: nyacat listen --port=6969
  ```
  
- ![Screenshot]https://i.imgur.com/xIwNy0k.png
+ 
+ <img src="https://i.imgur.com/xIwNy0k.png"
+     alt="ScreenShot"
+     style="float: left; margin-right: 10px;" />
 
 you can also remove the .py extension and add it in your path, setup the #! and revoke it directly from commandline.
 
