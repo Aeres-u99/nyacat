@@ -4,6 +4,8 @@ import signal
 import sys
 from colored import fg,bg,attr
 import click
+from threading import Thread
+
 
 warning = fg('red')
 command = fg('green')
@@ -11,6 +13,15 @@ command_bg = fg('green')
 status  = fg('cyan')
 message = fg('blue')
 bold = attr("bold")
+
+def receiver(sock,ps,*server_address):
+    """Receives conections"""
+    data = sock.recv(2048)
+    while data:
+        print("~> ",data)
+        print(str(ps).format(*server_address))
+        data = sock.recv(2048)
+    
 
 def signal_handler(sig, frame):
     print(warning+"\n[Ctrl+C recieved]"+bold)
@@ -62,19 +73,23 @@ def listen(lport):
 def client(host,port):
 
     "Connection mode: nyacat client --host=0.0.0.0 --port=6969"
-    
+
     sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     server_address = (host,port)
     print(command+"[Connecting to {} on port {}] ... ".format(*server_address))
     sock.connect(server_address)
-
     try:
+        ps = command_bg+"[  {}"
+        ps+=warning+"@"
+        ps+=command_bg+"{} >>>] "
+        message = input(str(ps).format(*server_address))
+        bgthread = Thread(target=receiver,args=(sock,ps,*server_address,))
+        bgthread.start()
         while True:
-            ps = command_bg+"[  {}"
-            ps+=warning+"@"
-            ps+=command_bg+"{} >>>] "
-            message = input(str(ps).format(*server_address))
             sock.sendall(message.encode('utf-8'))
+            message = input(str(ps).format(*server_address))
+
+
     finally:
         print(warning+"[Closing Socket]\n[Server dead]")
         sock.close()
