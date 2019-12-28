@@ -28,9 +28,9 @@ def cli():
 
 
 @cli.command()
-@click.option("--lport",help = "Set the port to listen on")
+@click.option("--lport",deafult=6969,help = "Set the port to listen on")
 def listen(lport):
-    "Listener mode: nyacat listen --port=6969"
+    "Listener mode: nyacat listen --lport=6969"
 
     if int(lport) > 65535 or int(lport) < 1 :
         print(warning+"Port invalid. Use a port between 0-65535, also on linux machines you need to be SU for using port < 1000"+bold)
