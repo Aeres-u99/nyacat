@@ -28,7 +28,7 @@ def cli():
 
 
 @cli.command()
-@click.option("--lport",deafult=6969,help = "Set the port to listen on")
+@click.option("--lport",default=6969,help = "Set the port to listen on")
 def listen(lport):
     "Listener mode: nyacat listen --lport=6969"
 
