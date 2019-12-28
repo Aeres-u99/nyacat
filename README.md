@@ -6,7 +6,7 @@ So I implemented this python based netcat, with colors.
 
 ### TODO:
 1) Keyboard handling: Support for up/down arrow keys and history. 
--- As a hack, you can use rlwrap to simulate the history file. 
+-- As a hack, one can use rlwrap[https://github.com/hanslub42/rlwrap] to simulate the history file. 
 2) Color customizations 
 3) Bug fixes. Its a quick and dirty work, but I'd like it to be more bug free.
 
@@ -17,7 +17,7 @@ pip install -r requirements.txt
 `
 
 #### Usage
-``
+```
 Usage: nyacat.py [OPTIONS] COMMAND [ARGS]...
 
   A netcat alternatives with tonnes of colors and good looking, works in
@@ -29,7 +29,7 @@ Options:
 Commands:
   client  Connection mode: nyacat client --host=0.0.0.0 --port=6969
   listen  Listener mode: nyacat listen --port=6969
- ``
+ ```
 
 you can also remove the .py extension and add it in your path, setup the #! and revoke it directly from commandline.
 
