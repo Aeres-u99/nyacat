@@ -8,8 +8,11 @@ So I implemented this python based netcat, with colors.
 1) Keyboard handling: Support for up/down arrow keys and history. 
 
 -- As a hack, one can use rlwrap https://github.com/hanslub42/rlwrap to simulate the history file. 
+
 2) Color customizations 
+
 3) Bug fixes. Its a quick and dirty work, but I'd like it to be more bug free.
+
 4) Multithreading support :P I was too lazy to add that 
 
 #### Installation
