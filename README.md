@@ -31,6 +31,8 @@ Commands:
   client  Connection mode: nyacat client --host=0.0.0.0 --port=6969
   listen  Listener mode: nyacat listen --port=6969
  ```
+ 
+ ![Screenshot]https://i.imgur.com/xIwNy0k.png
 
 you can also remove the .py extension and add it in your path, setup the #! and revoke it directly from commandline.
 
